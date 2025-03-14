@@ -1,12 +1,15 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import { 
-  FaTwitter, 
-  FaInstagram, 
-  FaLinkedin, 
-  FaGithub, 
-  FaMedium, 
-  FaGlobe 
+import {
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaWhatsapp,
+  FaLinkedin,
+  FaGithub,
+  FaMedium,
+  FaGlobe,
+  FaShoppingCart,
 } from "react-icons/fa";
 
 type LinkCardProps = {
@@ -18,6 +21,12 @@ type LinkCardProps = {
 
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
+    case "fa-cart-shopping":
+      return <FaShoppingCart className="text-orange-400 w-6 h-6" />;
+    case "fa-youtube":
+      return <FaYoutube className="text-red-400 w-6 h-6" />;
+    case "fa-whatsapp":
+      return <FaWhatsapp className="text-green-400 w-6 h-6" />;
     case "fa-twitter":
       return <FaTwitter className="text-blue-400 w-6 h-6" />;
     case "fa-instagram":
@@ -34,7 +43,12 @@ const getIconComponent = (iconName: string) => {
   }
 };
 
-export function LinkCard({ title, url, icon, isPrimary = false }: LinkCardProps) {
+export function LinkCard({
+  title,
+  url,
+  icon,
+  isPrimary = false,
+}: LinkCardProps) {
   return (
     <a
       href={url}
@@ -50,13 +64,13 @@ export function LinkCard({ title, url, icon, isPrimary = false }: LinkCardProps)
         console.log(`Link clicked: ${title} (${url})`);
       }}
     >
-      <div className="w-6 text-center">
-        {getIconComponent(icon)}
-      </div>
+      <div className="w-6 text-center">{getIconComponent(icon)}</div>
       <span className={`ml-3 font-medium ${isPrimary ? "" : "text-gray-700"}`}>
         {title}
       </span>
-      <ChevronRight className={`h-4 w-4 ml-auto ${isPrimary ? "" : "text-gray-400"}`} />
+      <ChevronRight
+        className={`h-4 w-4 ml-auto ${isPrimary ? "" : "text-gray-400"}`}
+      />
     </a>
   );
 }

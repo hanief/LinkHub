@@ -13,13 +13,13 @@ type ProfileCardProps = {
   isLoading?: boolean;
 };
 
-export function ProfileCard({ 
-  name, 
-  handle, 
-  bio, 
-  avatarUrl, 
+export function ProfileCard({
+  name,
+  handle,
+  bio,
+  avatarUrl,
   links,
-  isLoading = false 
+  isLoading = false,
 }: ProfileCardProps) {
   if (isLoading) {
     return (
@@ -59,7 +59,6 @@ export function ProfileCard({
         {/* Profile Info */}
         <div className="text-center space-y-2">
           <h1 className="text-xl font-semibold text-gray-800">{name}</h1>
-          <h2 className="text-primary font-medium text-sm">{handle}</h2>
           <p className="text-gray-600 text-sm max-w-sm">{bio}</p>
         </div>
       </div>
@@ -72,7 +71,7 @@ export function ProfileCard({
             title={link.title}
             url={link.url}
             icon={link.icon}
-            isPrimary={link.isPrimary}
+            isPrimary={link.isPrimary || false}
           />
         ))}
       </div>
